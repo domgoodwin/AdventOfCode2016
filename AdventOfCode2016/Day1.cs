@@ -28,6 +28,7 @@ namespace AdventOfCode2016
             string output = "";
             //L = left 90, R = right 90, # = walk forward
             string[] steps = InputText.Split(',');
+            locationHistory.Add("0,0");
             foreach (var step in steps)
             {
                 ProcessStep(step);
@@ -101,37 +102,32 @@ namespace AdventOfCode2016
         }
         private void CheckPosition()
         {
-
+            int count = 0;
             foreach (var prevLocation in coordLog)
             {
+                count++;    
                 string curLocation = String.Format("{0},{1}", xCoord, yCoord);
-                if(prevLocation == curLocation && firstLocationVisitedTwiceDistance == 0)
+                if(prevLocation == curLocation && firstLocationVisitedTwiceDistance == 0 && count != coordLog.Count)
                 {
                     firstLocationVisitedTwiceDistance = CalculateDistance();
+                    count++;
                     return;
                 }
             }
         }
-        List<string> coordLog = new List<string>();
+        List<string> coordLog = new List<string> { "0,0" };
         private void LogCoord()
         {
-            // 2,2 to 2,5
-            if(coordLog.Count == 0)
-            {
-                locationHistory.Add(String.Format("{0},{1}", xCoord, yCoord));
-                coordLog.Add(String.Format("{0},{1}", xCoord, yCoord));
-                return;
-            }
             int x = Int32.Parse(locationHistory.Last().Split(',')[0]);
             int y = Int32.Parse(locationHistory.Last().Split(',')[1]);
-            coordLog.Add(String.Format("{0},{1}", x, y));
+            //coordLog.Add(String.Format("{0},{1}", x, y));
             while (x != xCoord || y != yCoord)
-            {
-                if(x < xCoord) { x++; }
-                if(x > xCoord) { x--; }
-                if(y < yCoord) { y++; }
-                if(y > yCoord) { y--; }
+            { 
                 coordLog.Add(String.Format("{0},{1}", x, y));
+                if (x < xCoord) { x++; }
+                if(x > xCoord) { x--; }
+                if (y < yCoord) { y++; }
+                if(y > yCoord) { y--; }
             }
             coordLog.Add(String.Format("{0},{1}", x, y));
             locationHistory.Add(String.Format("{0},{1}", xCoord, yCoord));
