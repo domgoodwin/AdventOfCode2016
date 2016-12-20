@@ -23,6 +23,9 @@ namespace AdventOfCode2016
             Day4 day4 = new Day4(text.day4Input);
             output = "Day 4: " + day4.Process();
             Console.WriteLine(output);
+            Day5 day5 = new Day5(text.Day5);
+            output = "Day 5: " + day5.Process();
+            Console.WriteLine(output);
 
             Console.ReadLine();            
         }
