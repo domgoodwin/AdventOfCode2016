@@ -19,7 +19,7 @@ namespace AdventOfCode2016
         public string Process()
         {
             string output = String.Format("Task 1 password: {0}, Task 2 password: {1}", 
-                "bypass",//GetTask1(),
+                GetTask1(),
                 GetTask2());
             return output;
         }
