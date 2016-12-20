@@ -49,7 +49,7 @@ namespace AdventOfCode2016
             }
             List<int> sortedCheckSums = amountOfCheckSumChars;
             sortedCheckSums.Sort();
-            if(sortedCheckSums == amountOfCheckSumChars)
+            if (amountOfCheckSumChars.SequenceEqual(sortedCheckSums))
             {
                 return sectorId;
             }

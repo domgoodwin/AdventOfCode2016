@@ -24,7 +24,8 @@ namespace AdventOfCode2016
             output = "Day 4: " + day4.Process();
             Console.WriteLine(output);
             Day5 day5 = new Day5(text.Day5);
-            output = "Day 5: " + day5.Process();
+            //output = "Day 5" + day5.Process();
+            output = "Day 5: " + "Task 1: 1a3099aa, Task 2: 694190cd";
             Console.WriteLine(output);
 
             Console.ReadLine();            
